@@ -1,0 +1,110 @@
+
+{
+  "project": {
+    "name": "adaptive-personal-finance",
+    "description": "An AI-powered personal finance app that adapts its financial structure to each user's needs.",
+    "principle": "Start simple, expand as user needs evolve."
+  },
+  "stack": {
+    "frontend": "Expo + React Native",
+    "language": "TypeScript",
+    "navigation": "Expo Router",
+    "server_state": "TanStack Query",
+    "forms_validation": "React Hook Form + Zod",
+    "backend": "Supabase",
+    "database": "PostgreSQL",
+    "authentication": "Supabase Auth",
+    "server_functions": "Supabase Edge Functions",
+    "ai": "LLM API with structured outputs and tool calling"
+  },
+  "architecture": {
+    "frontend": {
+      "responsibilities": [
+        "Authentication",
+        "Transaction management",
+        "Financial dashboard",
+        "Budget management",
+        "AI assistant interface"
+      ]
+    },
+    "backend": {
+      "responsibilities": [
+        "Authentication and authorization",
+        "Financial data persistence",
+        "Business logic and calculations",
+        "AI orchestration",
+        "Data validation"
+      ]
+    },
+    "database": {
+      "source_of_truth": "PostgreSQL",
+      "flexible_configuration": "JSONB",
+      "user_isolation": "Row Level Security"
+    },
+    "ai": {
+      "state": "Stateless",
+      "context_source": "Persisted user data and conversation history",
+      "responsibilities": [
+        "Understand user financial needs",
+        "Generate financial structures",
+        "Suggest category and budget changes",
+        "Explain financial patterns"
+      ],
+      "constraints": [
+        "Never perform financial calculations",
+        "Never modify financial records directly",
+        "Validate all structured outputs",
+        "Require user approval for meaningful changes"
+      ]
+    }
+  },
+  "data_model": {
+    "profiles": "User information and preferences",
+    "financial_blueprints": "Versioned JSONB financial configurations",
+    "categories": "User-defined income and expense categories",
+    "transactions": "Income and expense records referencing category IDs",
+    "budgets": "Category-based spending limits",
+    "financial_goals": "User financial objectives",
+    "conversations": "AI conversation sessions",
+    "conversation_messages": "Persisted conversation history",
+    "ai_proposals": "Validated but not yet approved AI suggestions"
+  },
+  "core_workflow": {
+    "transaction": [
+      "User submits transaction",
+      "Application validates input",
+      "Backend persists transaction",
+      "Dashboard reflects updated financial data"
+    ],
+    "ai_assistance": [
+      "User describes financial needs",
+      "Backend retrieves relevant user context",
+      "LLM generates structured proposal",
+      "Application validates proposal",
+      "User reviews and approves",
+      "Backend applies changes transactionally"
+    ]
+  },
+  "development": {
+    "initial_scope": [
+      "Authentication",
+      "Transaction tracking",
+      "Customizable categories",
+      "Financial dashboard",
+      "AI-assisted financial structure"
+    ],
+    "future_scope": [
+      "Cash flow forecasting",
+      "Financial simulations",
+      "Household finance",
+      "Personalized financial recommendations"
+    ],
+    "principles": [
+      "Keep architecture modular",
+      "Prefer deterministic business logic",
+      "Avoid unnecessary dependencies",
+      "Preserve historical financial records",
+      "Build incrementally"
+    ]
+  }
+}
